@@ -61,7 +61,7 @@ def calculate_columns(df):
         # import pdb
         # pdb.set_trace()
         for i in range(1,16):
-            first_forteen_day_Avg_Gain += df.loc[i,'E']
+            first_forteen_day_Avg_Gain += round(df.loc[i,'E'],2)
             first_forteen_day_Avg_Loss += round(df.loc[i,'F'],2)
 
         df.loc[14,'G']=round(first_forteen_day_Avg_Gain/14.0,2)
@@ -88,8 +88,8 @@ def calculate_columns(df):
             axis=1
         )
         for i in range(14,len(df)):
-            df.loc[i, 'I'] = str(df.loc[i,'I'])[:4]
-            df.loc[i, 'H'] = str(df.loc[i,'H'])[:4]
+            df.loc[i, 'I'] = round(df.loc[i,'I'],2)
+            df.loc[i, 'H'] = round(df.loc[i,'H'],2)
         df.rename(columns={'D': 'Change', 'E': 'Gain', 'F': 'Loss', 'G': 'Avg Gain', 'H': 'Avg Loss', 'I': 'HM', 'J': 'HMA'}, inplace=True)
     
     except Exception as e:
